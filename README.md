@@ -1,2 +1,4 @@
 # gradle
-gradle 中文api
+gradle
+1.gradle的增量构建
+增量构建的原理就是监控input的变化，只有input变化了，所对应的task才会重新执行，否则直接跳过执行，重用上次task执行的结果即可。所以在编写gradle的task的时候，需要指定task的input和output。并且要注意只有对output结果有影响的输入才是真正的input，如果定义了对output结果没有影响的一些输入进去，则会导致task的重新执行，就导致了不必要的性能损耗。还要注意不确定执行结果的task，比如说相同的input会导致不同的output结果，那么这样的任务将不能被配置为增量构建任务。
